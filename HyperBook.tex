@@ -1,0 +1,189 @@
+\documentclass[10pt]{book}
+\paperwidth=6in
+\paperheight=9in
+
+\usepackage{graphicx,color,fancyhdr}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=blue, urlcolor=blue}
+\usepackage{moreverb}
+% moreverb is in tetex-extra
+\usepackage[left=0.625in,top=1in,right=0.5in,bottom=1in]{geometry}
+% \pagestyle{empty}
+
+%Beautifying code
+\usepackage{minted}
+
+% Define pagestyle
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{ \emph{#1}}{}}
+\fancyhead[LO]{}
+\fancyhead[RE]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+% \sloppy
+
+% Clean after an itemize
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0pt,after=\newline}
+
+% Define a tab conscious verbatim for python code
+\def\sourcetabsize{4}
+\newenvironment{sourcestyle}{\begin{scriptsize}}{\end{scriptsize}}
+\def\sourceinput#1{\par\begin{sourcestyle}\verbatimtabinput[\sourcetabsize]{#1}\end{sourcestyle}\par}
+
+
+% \makeatletter
+% \g@addto@macro\@verbatim\footnotesize
+% \makeatother
+\makeatletter
+\g@addto@macro\@verbatim\scriptsize
+\makeatother
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\ \\
+\ \\
+\ \\
+\ \\
+%
+\ \\
+\ \\
+\ \\ % force an empty line
+% textsc is small caps
+\textsc{\Large
+Hyper Spectral For All\\
+}
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+% \includegraphics[scale=0.25]{fullreso.png}\\
+\ \\
+\textsc{\Large
+\\
+\ \\}
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+\ \\
+%
+\vfill % fill vertical space
+% split the page into two columns
+% left column
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\end{flushleft}
+\end{minipage}
+%
+% right column
+\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+\ \\
+\ \\
+\emph{Dr. Yann H. Chemin\\Dr. Margherita Di Leo}
+
+% ensure vertical alignment with LHS
+\footnotesize{\ }
+\end{flushright}
+\end{minipage}
+%
+% Bottom of the page
+% \today is the compilation date
+% {\large \today}
+%
+\end{center}
+\end{titlepage}
+\begin{flushleft}
+ \textbf{GIS programming}
+\end{flushleft}
+First Edition\newline\linebreak
+Dr. Yann H. Chemin\\Dr. Margherita Di Leo\newline\linebreak
+ISBN  XXX-X-XXX-XXXXX-X\newline\linebreak
+Public Domain\newline
+\newpage
+\begin{center}
+ \textbf{Foreword}
+\end{center}
+This textbook aims at expanding basics of Hyper Spectral Science, application and programmming.
+It should be taken as an overview more than an thorough material, and by no mean dealing with all of the subject. 
+\newline\linebreak
+After going through this book, the reader will be able to have a basic knowledge of the technology available
+for Hyper Spectral data programming, and a good practical hand on most common ways to investigate them.
+\newline\linebreak
+Greetings and good luck,\newline
+Yann Chemin\\Margherita Di Leo\newline\linebreak
+\tableofcontents
+\newpage
+\chapter{Introduction}
+In a very short time (relative to Earth's age), the modern human civilization has conquered its neighbouring space with
+probes, satellites, and vehicles carrying humans for exploration. Observing platforms (handhelds, 
+terrestrial, airborne or space-borne) are found in a large range of observational situation. 
+Starting in our hands, circumventing our inner atmosphere to its boundary, in low earth orbit up to geostationary orbit,
+up to other planets and celestial bodies.\newline\linebreak
+Remote Sensing is now ubiquitous and increasingly in public access on planet Earth, and thus enters a revolutionary age.
+Earth monitoring satellites permit detailed, descriptive, quantitative, holistic, standardized, global evaluation
+of the state of the Earth skin in a manner that our actual Earthen civilization has never been able to before.\newline\linebreak
+On Earth, numerous remote sensing datasets are available, a good start could be the Reverb website (\href{http://reverb.echo.nasa.gov/reverb/}{reverb.echo.nasa.gov/reverb/}). Outside of this Earth, remote sensing missions within our solar system have largely increased and with their full datasets available online (\href{http://pds.nasa.gov}{pds.nasa.gov}).\newline\linebreak
+In this book, Python is used to provide ready-to-go GIS programming examples. Python is a simple, expressive \& clear high-level programming language, it is used here to lessen the learning curve and for its readability. It is found at
+(\href{http://www.python.org}{www.python.org}). It is also called by some a scripting language,
+because it does not need explicit compilation into an application binary file to be used. Throughout this book, a number of
+tools using bindings to Python are used. The main one is the Python-GDAL/OGR binding 
+(\href{http://pypi.python.org/pypi/GDAL/}{pypi.python.org/pypi/GDAL/}), which are a number of tools for programming
+and manipulating geospatial raster and vector data.\newline
+\newpage
+\chapter{Chapter1}
+\section{Introduction}
+\subsection{vcvcvcvcvcvv}
+\subsection{cccvcvccvcvs}
+
+
+\noindent An example can be (from Merchich/Nord Maroc to WGS84 lat/long):
+
+\begin{minted}[frame=single,linenos,mathescape,fontsize=\footnotesize]{sh}
+ogr2ogr -s_srs EPSG:26191 -t_srs EPSG:4326 outfileWgs84.shp infileMerchich.shp
+\end{minted}
+
+\subsection{Loading required libraries in Python}
+Few things are required to be able to let Python understand the instructions in the following examples. 
+They are {\it osr} and {\it ogr}. {\it osr} is a library to manipulate spatial references systems (projections).
+{\it ogr} is a library to manipulate geometry entities and their vector formats containers.
+
+\begin{minted}[frame=single,linenos,mathescape,fontsize=\footnotesize]{py}
+#!/usr/bin/env python
+#import required libraries
+
+from osgeo import osr
+from osgeo import ogr
+\end{minted}
+
+\newpage
+
+\newpage
+\chapter{Final Notes}
+
+\newpage
+\section{Acknowledgements}
+Planetary imagery found in this book are courtesy of NASA/JPL, vector data is courtesy of \href{http:/gadm.org}{gadm.org}
+\section{License for the code in this book}
+All code in this book is Public Domain, if you really need to include information about the author 
+the following can be used.
+\begin{minted}[fontsize=\footnotesize]{py}
+###############################################################################
+# Public Domain 2015-2016
+# Yann Chemin <yann.chemin@gmail.com>
+# Margherita Di Leo <madi468@gmail.com>
+###############################################################################
+\end{minted}
+\end{document}
