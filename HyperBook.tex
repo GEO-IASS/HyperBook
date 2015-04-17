@@ -116,7 +116,7 @@ Public Domain\newline
 \begin{center}
  \textbf{Foreword}
 \end{center}
-This textbook aims at expanding basics of Hyper Spectral Science, application and programmming.
+This textbook aims at expanding basics of Hyper Spectral Science, application and programming.
 It should be taken as an overview more than a thorough material, and by no mean dealing with all of the subject. 
 \newline\linebreak
 After going through this book, the reader will be able to have a basic knowledge of the technology available
@@ -155,9 +155,14 @@ and manipulating geospatial raster and vector data.\newline
 
 %%%%%%%%%%
 
-\chapter{Chapter1}
-\section{Introduction}
-\subsection{vcvcvcvcvcvv}
+\chapter{Title of Chapter2}
+%\section{Introduction}
+\section{Hyperspectral imagery}
+The electromagnetic spectrum is the range of frequencies of which the light is composed, being an electromagnetic 
+radiation. The visible bands (RGB) are a small subset of the spectrum. Hyperspectral sensors can capture many more frequencies and
+in fact hyperspectral images come in several bands. 
+Such images can be useful for identifying objects from remote, because turns out that elements / materials have their peculiar
+signature in the spectrum, a sort of characteristic shape of the diagram of frequencies. 
 \subsection{cccvcvccvcvs}
 
 
@@ -167,7 +172,7 @@ and manipulating geospatial raster and vector data.\newline
 ogr2ogr -s_srs EPSG:26191 -t_srs EPSG:4326 outfileWgs84.shp infileMerchich.shp
 \end{minted}
 
-\subsection{Loading required libraries in Python}
+\section{Loading required libraries in Python}
 Few things are required to be able to let Python understand the instructions in the following examples. 
 They are {\it osr} and {\it ogr}. {\it osr} is a library to manipulate spatial references systems (projections).
 {\it ogr} is a library to manipulate geometry entities and their vector formats containers.
